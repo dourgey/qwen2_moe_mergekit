@@ -149,7 +149,7 @@ class Qwen2MoEConfig(PretrainedConfig):
         self.num_local_experts = num_local_experts
         self.output_router_logits = output_router_logits
         self.router_aux_loss_coef = router_aux_loss_coef
-        
+
         super().__init__(
             tie_word_embeddings=tie_word_embeddings,
             **kwargs,
