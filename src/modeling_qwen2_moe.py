@@ -51,6 +51,7 @@ from transformers.utils import (
 )
 from src.configuration_qwen2_moe import Qwen2MoEConfig
 
+# 如果未安装 flash_atth 导致加载保存完的模型时报错，注释掉下面这几行与 flash_attn import 相关的代码即可
 if is_flash_attn_2_available():
     from flash_attn import flash_attn_func, flash_attn_varlen_func
     from flash_attn.bert_padding import index_first_axis, pad_input, unpad_input  # noqa
@@ -803,7 +804,7 @@ class QwenSparseMoeBlock(nn.Module):
         super().__init__()
         self.hidden_size = config.hidden_size
         self.intermediate_size = config.intermediate_size
-        self.num_experts = config.num_experts
+        self.num_experts = config.num_local_experts
         self.top_k = config.num_experts_per_tok
 
         self.gate = nn.Linear(self.hidden_size, self.num_experts, bias=False)

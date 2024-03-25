@@ -17,8 +17,6 @@
 from transformers.configuration_utils import PretrainedConfig
 from transformers.utils import logging
 
-from src.modeling_qwen2_moe import Qwen2MoeModel
-
 logger = logging.get_logger(__name__)
 
 class Qwen2MoEConfig(PretrainedConfig):
