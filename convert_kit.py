@@ -161,6 +161,8 @@ def convert_causal_lm_to_moe_causal_lm(
         "AutoModelForCausalLM": "modeling_qwen2_moe.Qwen2MoEForCausalLM"
     }
 
+    moe_model.half()
+
     moe_model.save_pretrained(output_dir)
     # qwen2_moe_config.save_pretrained(output_dir)
     tokenizer.save_pretrained(output_dir)
